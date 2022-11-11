@@ -133,6 +133,7 @@
                 android:text="Activity Level"
                 android:gravity="center_vertical"/>
             <Spinner
+                android:id="@+id/spinnerActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
 
@@ -148,6 +149,7 @@
                 android:text="Goal"
                 android:gravity="center_vertical"/>
             <Spinner
+                android:id="@+id/spinnerGoal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
 

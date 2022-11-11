@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">assignment1</string>
+    
+    <string-array name="ActivityGoal">
+        <item>Maintain Weight</item>
+        <item>Lose weight</item>
+        <item>Gain weight</item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 </resources>

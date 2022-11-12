@@ -12,11 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
-        android:fontFamily="sans-serif-medium"
         android:text="Welcome!"
-        android:textColor="#979797"
-        android:textFontWeight="600"
-        android:textSize="25dp" />
+        android:textAppearance="@style/headline"/>
 
     <TextView
         android:id="@+id/textGetStart"
@@ -24,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
         android:layout_below="@+id/textWelcome"
-        android:text="Let's get you started, please input your information below"
-        android:fontFamily="sans-serif-light"
+        android:text="Let's get you started, please input your information below!"
+        android:textAppearance="@style/body_1"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"/>
 
@@ -35,7 +32,7 @@
 
         android:orientation="vertical"
         android:layout_below="@+id/textGetStart"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp">
 
@@ -46,7 +43,8 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Age"/>
+                android:text="Age"
+                android:textAppearance="@style/body_1"/>
             <SeekBar
                 android:id="@+id/seekBarAge"
                 android:layout_width="220dp"
@@ -57,7 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="18"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textAppearance="@style/body_1"/>
 
         </LinearLayout>
 
@@ -69,22 +68,26 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Gender"/>
+                android:text="Gender"
+                android:textAppearance="@style/body_1"/>
             <RadioGroup
+                android:id="@+id/radioGroupGender"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/radioBtnMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
-                    android:textColor="#979797"/>
+                    android:textAppearance="@style/body_1"/>
                 <RadioButton
+                    android:id="@+id/radioBtnFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textColor="#979797"
+                    android:textAppearance="@style/body_1"
                     android:layout_marginLeft="50dp"/>
 
             </RadioGroup>
@@ -98,8 +101,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Weight"/>
+                android:text="Weight"
+                android:textAppearance="@style/body_1"/>
             <EditText
+                android:id="@+id/editTextWeight"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="(in KG)"
@@ -114,8 +119,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Height"/>
+                android:text="Height"
+                android:textAppearance="@style/body_1"/>
             <EditText
+                android:id="@+id/editTextHeight"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="(in m)"
@@ -131,11 +138,13 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:text="Activity Level"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textAppearance="@style/body_1"/>
             <Spinner
                 android:id="@+id/spinnerActivity"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:textAppearance="@style/caption"/>
 
         </LinearLayout>
 
@@ -147,16 +156,25 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:text="Goal"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textAppearance="@style/body_1"/>
             <Spinner
                 android:id="@+id/spinnerGoal"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:textAppearance="@style/caption"/>
 
         </LinearLayout>
 
-
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/avocado"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/buttonSave"/>
 
     </LinearLayout>
 

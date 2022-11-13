@@ -169,7 +169,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/avocado"
+            android:backgroundTint="@color/light_avocado"
+            android:textColor="@color/avocado"
             android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -110,6 +110,7 @@ public class InformationActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Check if any field is empty (height, weight and gender)
                 boolean cont = true;
                 if(TextUtils.isEmpty(editTextHeight.getText())){
                     editTextHeight.setError("Height is required");
@@ -123,10 +124,22 @@ public class InformationActivity extends AppCompatActivity {
                     radioBtnFemale.setError("Gender is required");
                     cont = false;
                 }
+
+                //If no field empty then init intent and put information in for PlanActivity
                 if(cont){
                     Intent intent = new Intent (InformationActivity.this,PlanActivity.class);
-
-                    Toast.makeText(InformationActivity.this, "Full", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("Age",seekBarAge.getProgress());
+                    if(radioGroupGender.getCheckedRadioButtonId() == R.id.radioBtnFemale){
+                        intent.putExtra("Gender",1); //1 is female
+                    } else {
+                        intent.putExtra("Gender",2); //2 is male
+                    }
+                    intent.putExtra("Weight",Double.parseDouble(editTextWeight.getText().toString()));
+                    intent.putExtra("Height",Double.parseDouble(editTextHeight.getText().toString()));
+                    intent.putExtra("Activity",spinnerActivity.getSelectedItemPosition());
+                    intent.putExtra("Goal",spinnerGoal.getSelectedItemPosition());
+                    startActivity(intent);
+                    finish();
                 }
             }
         });

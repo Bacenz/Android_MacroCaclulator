@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InformationActivity">
+    tools:context=".InformationActivity"
+    android:padding="25dp">
 
     <TextView
         android:id="@+id/textWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
         android:text="Welcome!"
         android:textAppearance="@style/headline"/>
 
@@ -19,165 +18,168 @@
         android:id="@+id/textGetStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
         android:layout_below="@+id/textWelcome"
         android:text="Let's get you started, please input your information below!"
         android:textAppearance="@style/body_1"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-
-        android:orientation="vertical"
+        android:text="Age"
+        android:textAppearance="@style/body_1"
         android:layout_below="@+id/textGetStart"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp">
+        android:id="@+id/textViewAge"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <SeekBar
+        android:id="@+id/seekBarAge"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:max="62"
+        android:layout_toRightOf="@+id/textViewAge"
+        android:layout_below="@+id/textGetStart"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/textSeekBarAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18"
+        android:gravity="center"
+        android:textAppearance="@style/body_1"
+        android:layout_toRightOf="@+id/seekBarAge"
+        android:layout_below="@+id/textGetStart"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewAge"
+        android:id="@+id/textViewGender"
+        android:layout_alignTop="@+id/radioGroupGender"
+        android:layout_alignBottom="@+id/radioGroupGender"
+        android:gravity="center_vertical"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBarAge"
+        android:layout_toRightOf="@+id/textViewGender"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioBtnMale"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Age"
-                android:textAppearance="@style/body_1"/>
-            <SeekBar
-                android:id="@+id/seekBarAge"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:max="62" />
-            <TextView
-                android:id="@+id/textSeekBarAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="18"
-                android:gravity="center"
-                android:textAppearance="@style/body_1"/>
+            android:text="Male"
+            android:textAppearance="@style/body_1" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RadioButton
+            android:id="@+id/radioBtnFemale"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left|center">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Gender"
-                android:textAppearance="@style/body_1"/>
-            <RadioGroup
-                android:id="@+id/radioGroupGender"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_marginLeft="50dp"
+            android:text="Female"
+            android:textAppearance="@style/body_1" />
 
-                <RadioButton
-                    android:id="@+id/radioBtnMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:textAppearance="@style/body_1"/>
-                <RadioButton
-                    android:id="@+id/radioBtnFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Female"
-                    android:textAppearance="@style/body_1"
-                    android:layout_marginLeft="50dp"/>
+    </RadioGroup>
 
-            </RadioGroup>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Height"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewGender"
+        android:layout_alignTop="@+id/editTextHeight"
+        android:layout_alignBottom="@+id/editTextHeight"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewHeight"/>
 
-        </LinearLayout>
+    <EditText
+        android:id="@+id/editTextHeight"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="(in cm)"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/radioGroupGender"
+        android:layout_toRightOf="@+id/textViewGender"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Weight"
-                android:textAppearance="@style/body_1"/>
-            <EditText
-                android:id="@+id/editTextWeight"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="(in KG)"
-                android:inputType="numberDecimal"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewHeight"
+        android:id="@+id/textViewWeight"
+        android:layout_alignTop="@+id/editTextWeight"
+        android:layout_alignBottom="@+id/editTextWeight"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="(in KG)"
+        android:inputType="numberDecimal"
+        android:layout_toRightOf="@id/textViewWeight"
+        android:layout_below="@+id/editTextHeight"/>
 
-        </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Level"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewWeight"
+        android:id="@+id/textViewActivity"
+        android:layout_alignTop="@+id/spinnerActivity"
+        android:layout_alignBottom="@+id/spinnerActivity"
+        android:layout_alignStart="@+id/textViewWeight"
+        android:layout_alignEnd="@+id/textViewWeight"/>
+    <Spinner
+        android:id="@+id/spinnerActivity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAppearance="@style/caption"
+        android:layout_toRightOf="@+id/textViewActivity"
+        android:layout_below="@+id/editTextWeight"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Height"
-                android:textAppearance="@style/body_1"/>
-            <EditText
-                android:id="@+id/editTextHeight"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="(in m)"
-                android:inputType="numberDecimal"/>
+    <TextView
+        android:id="@+id/textViewGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goal"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewActivity"
+        android:layout_alignTop="@+id/spinnerGoal"
+        android:layout_alignBottom="@+id/spinnerGoal"
+        android:layout_alignStart="@+id/textViewActivity"
+        android:layout_alignEnd="@+id/textViewActivity"/>
 
-        </LinearLayout>
+    <Spinner
+        android:id="@+id/spinnerGoal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAppearance="@style/caption"
+        android:layout_toRightOf="@+id/textViewGoal"
+        android:layout_below="@+id/spinnerActivity"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:text="Activity Level"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/body_1"/>
-            <Spinner
-                android:id="@+id/spinnerActivity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:textAppearance="@style/caption"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:text="Goal"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/body_1"/>
-            <Spinner
-                android:id="@+id/spinnerGoal"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:textAppearance="@style/caption"/>
-
-        </LinearLayout>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/light_avocado"
-            android:textColor="@color/avocado"
-            android:text="Save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/buttonSave"/>
-
-    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_avocado"
+        android:textColor="@color/avocado"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/buttonSave"
+        android:layout_below="@+id/spinnerGoal"/>
 
 
 </RelativeLayout>

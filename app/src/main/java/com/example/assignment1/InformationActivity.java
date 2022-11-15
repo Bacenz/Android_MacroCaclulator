@@ -52,36 +52,12 @@ public class InformationActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterGoal = ArrayAdapter.createFromResource(this,R.array.Goal, android.R.layout.simple_spinner_item);
         adapterGoal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGoal.setAdapter(adapterGoal);
-        spinnerGoal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String text = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(InformationActivity.this, "You selected " + text, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         //Activity spinner setup
         Spinner spinnerActivity = (Spinner) findViewById(R.id.spinnerActivity);
         ArrayAdapter<CharSequence> adapterActivity = ArrayAdapter.createFromResource(this,R.array.Activity, android.R.layout.simple_spinner_item);
         adapterActivity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerActivity.setAdapter(adapterActivity);
-        spinnerActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String text = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(InformationActivity.this, "You selected " + text, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         //EditText setup
         EditText editTextWeight = (EditText) findViewById(R.id.editTextWeight);
@@ -143,20 +119,6 @@ public class InformationActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        //Button Reset setup
-//        Button buttonReset = (Button) findViewById(R.id.buttonReset);
-//        buttonReset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                seekBarAge.setProgress(0);
-//                editTextHeight.getText().clear();
-//                editTextWeight.getText().clear();
-//                spinnerActivity.setSelection(0);
-//                spinnerGoal.setSelection(0);
-//                radioGroupGender.clearCheck();
-//            }
-//        });
 
     }
 }

@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlanActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="25dp">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layoutBMI"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/light_avocado"
         android:padding="10dp">
-        
+
         <TextView
             android:gravity="top"
 
@@ -31,41 +30,40 @@
             android:textStyle="bold">
         </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textNumberBMI"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="00"
+            android:textAppearance="@style/title"
+            android:textColor="@color/avocado"
+            android:layout_below="@+id/textBMI"/>
 
-            <TextView
-                android:id="@+id/textNumberBMI"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="00"
-                android:textAppearance="@style/title"
-                android:textColor="@color/avocado" />
+        <TextView
+            android:id="@+id/textRating"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Rating:"
+            android:textAppearance="@style/title"
+            android:textColor="@color/avocado"
+            android:layout_below="@+id/textBMI"
+            android:layout_toRightOf="@+id/textNumberBMI"/>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rating:"
-                android:textAppearance="@style/title"
-                android:textColor="@color/avocado" />
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <LinearLayout
+        android:id="@+id/layoutBMR"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/light_avocado"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_below="@+id/layoutBMI"
+        android:layout_marginTop="25dp">
 
         <TextView
             android:gravity="top"
@@ -82,7 +80,7 @@
 
         <TextView
             android:id="@+id/textNumberBMR"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"
             android:textAppearance="@style/title"
@@ -90,24 +88,24 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutTDEE"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/light_avocado"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_below="@+id/layoutBMR"
+        android:layout_marginTop="25dp">
 
         <TextView
             android:gravity="top"
 
             android:id="@+id/textTDEE"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
 
-            android:text="Total Daily Energy Expenditure(TDEE)"
+            android:text="Total Daily Energy Expenditure (TDEE)"
             android:textAppearance="@style/title"
             android:textColor="@color/avocado"
             android:textStyle="bold">
@@ -115,12 +113,33 @@
 
         <TextView
             android:id="@+id/textNumberTDEE"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"
             android:textAppearance="@style/title"
             android:textColor="@color/avocado" />
     </LinearLayout>
 
+    <TextView
+        android:layout_marginTop="25dp"
+        android:id="@+id/textPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recommended plan"
+        android:textAppearance="@style/title"
+        android:textStyle="bold"
+        android:layout_below="@+id/layoutTDEE"/>
 
-</LinearLayout>
+    <Spinner
+        android:id="@+id/spinnerPlan"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/caption"
+        android:layout_toRightOf="@+id/textPlan"
+        android:layout_below="@+id/layoutTDEE"
+        android:layout_alignEnd="@+id/layoutTDEE"
+        android:layout_alignTop="@+id/textPlan"
+        android:layout_alignBottom="@+id/textPlan"
+        android:layout_marginLeft="10dp"/>
+
+</RelativeLayout>

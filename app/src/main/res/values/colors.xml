@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="avocado">#083B40</color>
     <color name="light_avocado">#E9FAB0</color>
+    <color name="severe_red">#BC2020</color>
+    <color name="fat_fuck">#8A0101</color>
+    <color name="not_healthy">#D38888</color>
+    <color name="close_normal">#A19000</color>
+    <color name="normal">#008137</color>
 </resources>

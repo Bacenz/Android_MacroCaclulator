@@ -1,145 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlanActivity"
-    android:orientation="vertical"
-    android:padding="25dp">
+    tools:context=".PlanActivity">
 
     <RelativeLayout
-        android:id="@+id/layoutBMI"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/light_avocado"
-        android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:padding="25dp">
 
         <TextView
-            android:gravity="top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Back"
+            android:id="@+id/textBack"/>
 
-            android:id="@+id/textBMI"
+        <RelativeLayout
+            android:layout_below="@id/textBack"
+            android:id="@+id/layoutBMI"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/light_avocado"
+            android:padding="10dp">
 
-            android:text="Body Mass Index"
-            android:textAppearance="@style/headline"
-            android:textColor="@color/avocado"
-            android:textStyle="bold">
-        </TextView>
+            <TextView
+                android:gravity="top"
+
+                android:id="@+id/textBMI"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Body Mass Index"
+                android:textAppearance="@style/headline"
+                android:textColor="@color/avocado"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:id="@+id/textNumberBMI"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="00"
+                android:textAppearance="@style/title"
+                android:textColor="@color/avocado"
+                android:layout_below="@+id/textBMI"/>
+
+            <TextView
+                android:id="@+id/textRating"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rating:"
+                android:textAppearance="@style/title"
+                android:textColor="@color/avocado"
+                android:layout_below="@+id/textBMI"
+                android:layout_toRightOf="@+id/textNumberBMI"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutBMR"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/light_avocado"
+            android:padding="10dp"
+            android:layout_below="@+id/layoutBMI"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:gravity="top"
+
+                android:id="@+id/textBMR"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Basal Metabolic Rate (BMR)"
+                android:textAppearance="@style/headline"
+                android:textColor="@color/avocado"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:id="@+id/textNumberBMR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textAppearance="@style/title"
+                android:textColor="@color/avocado" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutTDEE"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/light_avocado"
+            android:padding="10dp"
+            android:layout_below="@+id/layoutBMR"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:gravity="top"
+
+                android:id="@+id/textTDEE"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+
+                android:text="Total Daily Energy Expenditure (TDEE)"
+                android:textAppearance="@style/title"
+                android:textColor="@color/avocado"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:id="@+id/textNumberTDEE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textAppearance="@style/title"
+                android:textColor="@color/avocado" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textNumberBMI"
+            android:layout_marginTop="25dp"
+            android:id="@+id/textPlan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommended plan"
+            android:textAppearance="@style/title"
+            android:textStyle="bold"
+            android:layout_below="@+id/layoutTDEE"
+            android:textColor="@color/avocado"/>
+
+        <Spinner
+            android:id="@+id/spinnerPlan"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/caption"
+            android:layout_toRightOf="@+id/textPlan"
+            android:layout_below="@+id/layoutTDEE"
+            android:layout_alignEnd="@+id/layoutTDEE"
+            android:layout_alignTop="@+id/textPlan"
+            android:layout_alignBottom="@+id/textPlan"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textDaily"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="00"
+            android:layout_height="50dp"
+            android:text="Daily Energy"
+            android:layout_below="@id/textPlan"
+            android:layout_marginTop="25dp"
             android:textAppearance="@style/title"
-            android:textColor="@color/avocado"
-            android:layout_below="@+id/textBMI"/>
+            android:gravity="center"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
 
         <TextView
-            android:id="@+id/textRating"
-            android:layout_width="fill_parent"
+            android:id="@+id/textDailyNumber"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Rating:"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/textDaily"
+            android:layout_alignTop="@+id/textDaily"
+            android:layout_alignBottom="@+id/textDaily"
+            android:layout_toEndOf="@id/textDaily"
+            android:layout_marginStart="-2dp"
+            android:gravity="center"
+            android:text="0000"
             android:textAppearance="@style/title"
-            android:textColor="@color/avocado"
-            android:layout_below="@+id/textBMI"
-            android:layout_toRightOf="@+id/textNumberBMI"/>
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textProtein"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Protein"
+            android:layout_below="@id/textDaily"
+            android:textAppearance="@style/title"
+            android:gravity="center"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textProteinNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/textProtein"
+            android:layout_alignTop="@+id/textProtein"
+            android:layout_alignBottom="@+id/textProtein"
+            android:layout_toEndOf="@id/textProtein"
+            android:layout_marginStart="-2dp"
+            android:gravity="center"
+            android:text="0000"
+            android:textAppearance="@style/title"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textCarbs"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Carbs"
+            android:layout_below="@id/textProtein"
+            android:textAppearance="@style/title"
+            android:gravity="center"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textCarbsNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/textCarbs"
+            android:layout_alignTop="@+id/textCarbs"
+            android:layout_alignBottom="@+id/textCarbs"
+            android:layout_toEndOf="@id/textCarbs"
+            android:layout_marginStart="-2dp"
+            android:gravity="center"
+            android:text="0000"
+            android:textAppearance="@style/title"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textFat"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Fat"
+            android:layout_below="@id/textCarbs"
+            android:textAppearance="@style/title"
+            android:gravity="center"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
+
+        <TextView
+            android:id="@+id/textFatNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/textFat"
+            android:layout_alignTop="@+id/textFat"
+            android:layout_alignBottom="@+id/textFat"
+            android:layout_toEndOf="@id/textFat"
+            android:layout_marginStart="-2dp"
+            android:gravity="center"
+            android:text="0000"
+            android:textAppearance="@style/title"
+            android:background="@drawable/rectangle_bg_no_radius"
+            android:textColor="@color/avocado"/>
 
     </RelativeLayout>
 
 
-    <LinearLayout
-        android:id="@+id/layoutBMR"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/light_avocado"
-        android:padding="10dp"
-        android:layout_below="@+id/layoutBMI"
-        android:layout_marginTop="25dp">
-
-        <TextView
-            android:gravity="top"
-
-            android:id="@+id/textBMR"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-
-            android:text="Basal Metabolic Rate (BMR)"
-            android:textAppearance="@style/headline"
-            android:textColor="@color/avocado"
-            android:textStyle="bold">
-        </TextView>
-
-        <TextView
-            android:id="@+id/textNumberBMR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textAppearance="@style/title"
-            android:textColor="@color/avocado" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutTDEE"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/light_avocado"
-        android:padding="10dp"
-        android:layout_below="@+id/layoutBMR"
-        android:layout_marginTop="25dp">
-
-        <TextView
-            android:gravity="top"
-
-            android:id="@+id/textTDEE"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-
-            android:text="Total Daily Energy Expenditure (TDEE)"
-            android:textAppearance="@style/title"
-            android:textColor="@color/avocado"
-            android:textStyle="bold">
-        </TextView>
-
-        <TextView
-            android:id="@+id/textNumberTDEE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textAppearance="@style/title"
-            android:textColor="@color/avocado" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_marginTop="25dp"
-        android:id="@+id/textPlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recommended plan"
-        android:textAppearance="@style/title"
-        android:textStyle="bold"
-        android:layout_below="@+id/layoutTDEE"/>
-
-    <Spinner
-        android:id="@+id/spinnerPlan"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/caption"
-        android:layout_toRightOf="@+id/textPlan"
-        android:layout_below="@+id/layoutTDEE"
-        android:layout_alignEnd="@+id/layoutTDEE"
-        android:layout_alignTop="@+id/textPlan"
-        android:layout_alignBottom="@+id/textPlan"
-        android:layout_marginLeft="10dp"/>
-
-</RelativeLayout>
+</ScrollView>

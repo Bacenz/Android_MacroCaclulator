@@ -4,12 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class PlanActivity extends AppCompatActivity {
+    private int plan = 0;
+    private int dailyConsumption = 0;
+    private double percentFat = 0.25, percentProtein = 0.25, percentCarb = 0.5;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +30,7 @@ public class PlanActivity extends AppCompatActivity {
         adapterActivity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPlan.setAdapter(adapterActivity);
 
+
         //Getting data from intent
         Intent intent = getIntent();
         int age = intent.getIntExtra("Age",0) + 18;
@@ -30,6 +39,23 @@ public class PlanActivity extends AppCompatActivity {
         double height = intent.getDoubleExtra("Height", 0.00);
         int goal = intent.getIntExtra("Goal",0);
         int activity = intent.getIntExtra("Activity",0);
+
+        TextView textBack = (TextView) findViewById(R.id.textBack);
+        textBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlanActivity.this,InformationActivity.class);
+                intent.putExtra("Age",age-36);
+                intent.putExtra("Gender",gender);
+                intent.putExtra("Weight",weight);
+                intent.putExtra("Height",height);
+                intent.putExtra("Goal",goal);
+                intent.putExtra("Activity",activity);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         //Initialize BMR, BMI, TDEE for calculation
         int bmr = 0;
@@ -79,30 +105,106 @@ public class PlanActivity extends AppCompatActivity {
         } else {
             bmr = (int) (88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age));
         }
-        textNumberBMR.setText(String.valueOf(bmr));
-        textNumberBMR.append(" kcal/day");
+        textNumberBMR.setText(String.valueOf(bmr) + " kcal/day");
 
         //Set text for TDEE + calculation
         switch(activity){
-            case 0:
+            case 0: //not active
                 tdee = (int) (bmr * 1.2);
                 break;
-            case 1:
+            case 1: //quite active
                 tdee = (int) (bmr * 1.375);
                 break;
-            case 2:
+            case 2: //average active
                 tdee = (int) (bmr * 1.55);
                 break;
-            case 3:
+            case 3: //active
                 tdee = (int) (bmr * 1.725);
                 break;
-            case 4:
+            case 4: //athlete
                 tdee = (int) (bmr * 1.9);
                 break;
+            default:
+                break;
         }
-        textNumberTDEE.setText(String.valueOf(tdee));
-        textNumberTDEE.append(" kcal/day");
+        textNumberTDEE.setText(String.valueOf(tdee) + " kcal/day");
+
+        //Daily Consumption calculation + display
+        dailyConsumption = tdee;
+        switch (goal){
+            case 0: //maintain weight
+                break;
+            case 1: //mild weight loss
+                dailyConsumption = dailyConsumption - 275;
+                break;
+            case 2: //weight loss
+                dailyConsumption = dailyConsumption - 550;
+                break;
+            case 3: //intense weight loss
+                dailyConsumption = dailyConsumption - 1100;
+                break;
+            case 4: //mild weight gain
+                dailyConsumption = dailyConsumption + 275;
+                break;
+            case 5: //weight gain
+                dailyConsumption = dailyConsumption + 550;
+                break;
+            case 6: //intense weight gain
+                dailyConsumption = dailyConsumption + 1100;
+                break;
+            default:
+                break;
+        }
+        TextView textDailyNumber = (TextView) findViewById(R.id.textDailyNumber);
+        textDailyNumber.setText(String.valueOf(dailyConsumption) + " kcal/day");
+
+        spinnerPlan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch(i){
+                    case 0: //balanced
+                        percentFat = 0.25;
+                        percentProtein = 0.25;
+                        percentCarb = 0.5;
+                        break;
+                    case 1: //low carb
+                        percentFat = 0.3;
+                        percentProtein = 0.3;
+                        percentCarb = 0.4;
+                        break;
+                    case 2: //low fat
+                        percentFat = 0.2;
+                        percentProtein = 0.3;
+                        percentCarb = 0.5;
+                        break;
+                    case 3: //high protein
+                        percentFat = 0.30;
+                        percentProtein = 0.35;
+                        percentCarb = 0.45;
+                        break;
+                    default:
+                        break;
+                }
+                int protein = (int) ((dailyConsumption * percentProtein) / 4);
+                int carbs = (int) ((dailyConsumption * percentCarb) / 4);
+                int fat = (int) ((dailyConsumption * percentFat) / 9);
+
+                TextView textProteinNumber = (TextView) findViewById(R.id.textProteinNumber);
+                textProteinNumber.setText(String.valueOf(protein) + " grams/day (" + percentProtein*100 + "%)");
+                TextView textCarbsNumber = (TextView) findViewById(R.id.textCarbsNumber);
+                textCarbsNumber.setText(String.valueOf(carbs) + " grams/day (" + percentCarb*100 + "%)");
+                TextView textFatNumber = (TextView) findViewById(R.id.textFatNumber);
+                textFatNumber.setText(String.valueOf(fat) + " grams/day (" + percentFat*100 + "%)");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
+
+
 
     /*
     Calculation for protein% fat% and carb%
@@ -116,7 +218,9 @@ public class PlanActivity extends AppCompatActivity {
     1kg = 7700 kcal --> 1100 kcal +- daily
 
     --> Daily consumption = TDEE - daily deficit/surplus
-    --> daily macro goal = (daily consumption * percent goal) / macro
+
+    ======>>>>> FORMULA: daily macro goal = (daily consumption * percent goal) / macro
+
     i.e. daily consumption = 2500; percent goal = 40 protein% 30 fat% 30 carb%; macro above
     -->
     protein = (2500 * 0.4) / 4 = 250 gram protein daily
@@ -133,15 +237,15 @@ public class PlanActivity extends AppCompatActivity {
     Carbs: 50%
     Fat: 25%
 
-    Low Fat:
-    Protein: 30%
-    Carbs: 50%
-    Fat: 20%
-
     Low Carbs:
     Protein: 30%
     Carbs: 40%
     Fat: 30%
+
+    Low Fat:
+    Protein: 30%
+    Carbs: 50%
+    Fat: 20%
 
     High Protein:
     Protein: 35%

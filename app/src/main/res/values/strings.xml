@@ -7,8 +7,8 @@
         <item>Weight loss (0.5kg/week)</item>
         <item>Intense weight loss (1kg/week)</item>
         <item>Mild weight gain (0.25kg/week)</item>
-        <item>Mild weight gain (0.5kg/week)</item>
-        <item>Mild weight gain (1kg/week)</item>
+        <item>Weight gain (0.5kg/week)</item>
+        <item>Intense weight gain (1kg/week)</item>
     </string-array>
 
     <string-array name="Activity">

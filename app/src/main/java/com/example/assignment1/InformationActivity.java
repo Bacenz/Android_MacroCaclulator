@@ -80,6 +80,24 @@ public class InformationActivity extends AppCompatActivity {
             }
         });
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null){
+            int age = bundle.getInt("Age",0) + 18;
+            int gender = bundle.getInt("Gender",0);
+            double weight = bundle.getDouble("Weight", 0.00);
+            double height = bundle.getDouble("Height", 0.00);
+            int goal = bundle.getInt("Goal",0);
+            int activity = bundle.getInt("Activity",0);
+
+            seekBarAge.setProgress(age);
+            if(gender == 1) radioBtnFemale.setChecked(true);
+            else radioBtnMale.setChecked(true);
+            editTextWeight.setText(String.valueOf(weight));
+            editTextHeight.setText(String.valueOf(height));
+            spinnerGoal.setSelection(goal);
+            spinnerActivity.setSelection(activity);
+        }
+
 
         //Button Save setup
         Button buttonSave = (Button) findViewById(R.id.buttonSave);

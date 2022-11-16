@@ -33,7 +33,7 @@ public class InformationActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 int temp = i + 18;
-                textSeekBarAge.setText(Integer.toString(temp));
+                textSeekBarAge.setText(String.valueOf(temp));
             }
 
             @Override
@@ -106,6 +106,21 @@ public class InformationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Check if any field is empty (height, weight and gender)
                 boolean cont = true;
+
+                double weight = 0;
+                double height = 0;
+                try{
+                    weight = Double.parseDouble(editTextWeight.getText().toString());
+                } catch(NumberFormatException e){
+                    editTextWeight.setError("Invalid Weight");
+                    cont = false;
+                }
+                try{
+                    height = Double.parseDouble(editTextHeight.getText().toString());
+                } catch(NumberFormatException e){
+                    editTextHeight.setError("Invalid Height");
+                    cont = false;
+                }
                 if(TextUtils.isEmpty(editTextHeight.getText())){
                     editTextHeight.setError("Height is required");
                     cont = false;
@@ -128,8 +143,8 @@ public class InformationActivity extends AppCompatActivity {
                     } else {
                         intent.putExtra("Gender",2); //2 is male
                     }
-                    intent.putExtra("Weight",Double.parseDouble(editTextWeight.getText().toString()));
-                    intent.putExtra("Height",Double.parseDouble(editTextHeight.getText().toString()));
+                    intent.putExtra("Weight",weight);
+                    intent.putExtra("Height",height);
                     intent.putExtra("Activity",spinnerActivity.getSelectedItemPosition());
                     intent.putExtra("Goal",spinnerGoal.getSelectedItemPosition());
                     startActivity(intent);

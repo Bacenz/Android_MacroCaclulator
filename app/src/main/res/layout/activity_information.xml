@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InformationActivity"
-    android:padding="25dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/textWelcome"
@@ -25,32 +25,33 @@
 
     <TextView
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Age"
         android:textAppearance="@style/body_1"
+        android:id="@+id/textViewAge"
+        android:gravity="center_vertical"
         android:layout_below="@+id/textGetStart"
-        android:layout_marginTop="30dp"
-        android:id="@+id/textViewAge"/>
+        android:layout_marginTop="10dp"/>
 
     <SeekBar
         android:id="@+id/seekBarAge"
+        android:layout_alignTop="@+id/textViewAge"
+        android:layout_alignBottom="@+id/textViewAge"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:max="62"
-        android:layout_toRightOf="@+id/textViewAge"
-        android:layout_below="@+id/textGetStart"
-        android:layout_marginTop="30dp"/>
+        android:layout_toRightOf="@+id/textViewAge"/>
 
     <TextView
         android:id="@+id/textSeekBarAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/seekBarAge"
+        android:layout_alignBottom="@+id/seekBarAge"
         android:text="18"
         android:gravity="center"
         android:textAppearance="@style/body_1"
-        android:layout_toRightOf="@+id/seekBarAge"
-        android:layout_below="@+id/textGetStart"
-        android:layout_marginTop="30dp"/>
+        android:layout_toRightOf="@+id/seekBarAge"/>
 
     <TextView
         android:layout_width="100dp"

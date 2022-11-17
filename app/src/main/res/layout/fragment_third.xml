@@ -1,14 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".thirdFragment">
+    tools:context=".thirdFragment"
+    android:padding="10dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Age"
+        android:textAppearance="@style/body_1"
+        android:id="@+id/textViewAge"
+        android:gravity="center_vertical"/>
+
+    <SeekBar
+        android:id="@+id/seekBarAge"
+        android:layout_alignTop="@+id/textViewAge"
+        android:layout_alignBottom="@+id/textViewAge"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:max="62"
+        android:layout_toRightOf="@+id/textViewAge"/>
+
+    <TextView
+        android:id="@+id/textSeekBarAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/seekBarAge"
+        android:layout_alignBottom="@+id/seekBarAge"
+        android:text="18"
+        android:gravity="center"
+        android:textAppearance="@style/body_1"
+        android:layout_toRightOf="@+id/seekBarAge"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewAge"
+        android:id="@+id/textViewGender"
+        android:layout_alignTop="@+id/radioGroupGender"
+        android:layout_alignBottom="@+id/radioGroupGender"
+        android:gravity="center_vertical"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBarAge"
+        android:layout_toRightOf="@+id/textViewGender"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioBtnMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textAppearance="@style/body_1" />
+
+        <RadioButton
+            android:id="@+id/radioBtnFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="Female"
+            android:textAppearance="@style/body_1" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Height"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewGender"
+        android:layout_alignTop="@+id/editTextHeight"
+        android:layout_alignBottom="@+id/editTextHeight"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewHeight"/>
+
+    <EditText
+        android:id="@+id/editTextHeight"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="(in cm)"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/radioGroupGender"
+        android:layout_toRightOf="@+id/textViewGender"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewHeight"
+        android:id="@+id/textViewWeight"
+        android:layout_alignTop="@+id/editTextWeight"
+        android:layout_alignBottom="@+id/editTextWeight"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="(in KG)"
+        android:inputType="numberDecimal"
+        android:layout_toRightOf="@id/textViewWeight"
+        android:layout_below="@+id/editTextHeight"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Level"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewWeight"
+        android:id="@+id/textViewActivity"
+        android:layout_alignTop="@+id/spinnerActivity"
+        android:layout_alignBottom="@+id/spinnerActivity"
+        android:layout_alignStart="@+id/textViewWeight"
+        android:layout_alignEnd="@+id/textViewWeight"/>
+    <Spinner
+        android:id="@+id/spinnerActivity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAppearance="@style/caption"
+        android:layout_toRightOf="@+id/textViewActivity"
+        android:layout_below="@+id/editTextWeight"/>
+
+    <TextView
+        android:id="@+id/textViewGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goal"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewActivity"
+        android:layout_alignTop="@+id/spinnerGoal"
+        android:layout_alignBottom="@+id/spinnerGoal"
+        android:layout_alignStart="@+id/textViewActivity"
+        android:layout_alignEnd="@+id/textViewActivity"/>
+
+    <Spinner
+        android:id="@+id/spinnerGoal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAppearance="@style/caption"
+        android:layout_toRightOf="@+id/textViewGoal"
+        android:layout_below="@+id/spinnerActivity"/>
+
+    <TextView
+        android:id="@+id/textViewPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plan"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/body_1"
+        android:layout_below="@+id/textViewGoal"
+        android:layout_alignTop="@+id/spinnerPlan"
+        android:layout_alignBottom="@+id/spinnerPlan"
+        android:layout_alignStart="@+id/textViewGoal"
+        android:layout_alignEnd="@+id/textViewGoal"/>
+
+    <Spinner
+        android:id="@+id/spinnerPlan"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAppearance="@style/caption"
+        android:layout_toRightOf="@+id/textViewGoal"
+        android:layout_below="@+id/spinnerGoal"/>
+
+
+    <TextView
+        android:id="@+id/textProtein"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Protein"
+        android:layout_below="@id/textViewPlan"
+        android:textAppearance="@style/body_1"
+        android:gravity="center_vertical"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="%"
+        android:textAppearance="@style/body_1"
+        android:gravity="center"
+
+        android:id="@+id/textPercentProtein"
+        android:layout_alignTop="@id/textProtein"
+        android:layout_alignBottom="@+id/textProtein"
+        android:layout_toEndOf="@+id/textProtein"/>
+
+    <TextView
+        android:id="@+id/textProteinNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textProtein"
+        android:layout_alignBottom="@+id/textProtein"
+        android:layout_toEndOf="@id/textPercentProtein"
+        android:gravity="center_vertical |end"
+        android:text="0000"
+        android:textAppearance="@style/body_1"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textCarbs"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Carbs"
+        android:layout_below="@id/textProtein"
+        android:textAppearance="@style/body_1"
+        android:gravity="center_vertical"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="%"
+        android:textAppearance="@style/body_1"
+        android:gravity="center"
+
+        android:id="@+id/textPercentCarbs"
+        android:layout_alignTop="@id/textCarbs"
+        android:layout_alignBottom="@+id/textCarbs"
+        android:layout_toEndOf="@+id/textCarbs"/>
+
+    <TextView
+        android:id="@+id/textCarbsNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCarbs"
+        android:layout_alignBottom="@+id/textCarbs"
+        android:layout_toEndOf="@id/textPercentCarbs"
+        android:gravity="center_vertical |end"
+        android:text="0000"
+        android:textAppearance="@style/body_1"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textFat"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Fat"
+        android:layout_below="@id/textCarbs"
+        android:textAppearance="@style/body_1"
+        android:gravity="center_vertical"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="%"
+        android:textAppearance="@style/body_1"
+        android:gravity="center"
+
+        android:id="@+id/textPercentFat"
+        android:layout_alignTop="@id/textFat"
+        android:layout_alignBottom="@+id/textFat"
+        android:layout_toEndOf="@+id/textFat"/>
+
+    <TextView
+        android:id="@+id/textFatNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textFat"
+        android:layout_alignBottom="@+id/textFat"
+        android:layout_toEndOf="@id/textPercentFat"
+        android:gravity="center_vertical |end"
+        android:text="0000"
+        android:textAppearance="@style/body_1"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#e0e0e0"
+        android:textColor="@color/avocado"
+        android:text="Save"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/buttonSave"
+        android:layout_below="@+id/textFat"
+        android:layout_marginTop="10dp"/>
+
+
+
+
+</RelativeLayout>

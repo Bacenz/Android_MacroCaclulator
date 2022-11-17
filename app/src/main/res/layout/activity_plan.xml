@@ -9,14 +9,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="25dp">
+        android:padding="10dp">
 
         <RelativeLayout
             android:id="@+id/layoutBMI"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/rounded_corner"
-            android:backgroundTint="#e0e0e0"
+            android:background="@drawable/rectangle_bg_no_radius"
             android:padding="10dp">
 
             <TextView
@@ -61,8 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="vertical"
-            android:background="@drawable/rounded_corner"
-            android:backgroundTint="#e0e0e0"
+            android:background="@drawable/rectangle_bg_no_radius"
             android:padding="10dp"
             android:layout_below="@+id/layoutBMI"
             android:layout_marginTop="25dp">
@@ -94,8 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="vertical"
-            android:background="@drawable/rounded_corner"
-            android:backgroundTint="#e0e0e0"
+            android:background="@drawable/rectangle_bg_no_radius"
             android:padding="10dp"
             android:layout_below="@+id/layoutBMR"
             android:layout_marginTop="25dp">
@@ -148,7 +145,7 @@
 
         <TextView
             android:id="@+id/textDaily"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Daily Energy"
             android:layout_below="@id/textPlan"
@@ -175,7 +172,7 @@
 
         <TextView
             android:id="@+id/textProtein"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Protein"
             android:layout_below="@id/textDaily"
@@ -202,7 +199,7 @@
 
         <TextView
             android:id="@+id/textCarbs"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Carbs"
             android:layout_below="@id/textProtein"
@@ -229,7 +226,7 @@
 
         <TextView
             android:id="@+id/textFat"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Fat"
             android:layout_below="@id/textCarbs"

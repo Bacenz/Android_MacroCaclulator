@@ -30,12 +30,14 @@ public class PlanActivity extends AppCompatActivity {
         //Getting data from intent
         Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra("User");
+        user.setAge(user.getAge()+18);
 
         TextView textBack = (TextView) findViewById(R.id.textBack);
         textBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PlanActivity.this,InformationActivity.class);
+                user.setAge(user.getAge()-18);
                 intent.putExtra("User",user);
                 startActivity(intent);
                 finish();

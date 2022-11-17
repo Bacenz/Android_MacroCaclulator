@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firstFragment"
+    android:padding="25dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome back!"
+        android:textAppearance="@style/headline"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:layout_below="@+id/textWelcome"
+        android:id="@+id/textCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:textColor="@color/avocado"
+        android:textAppearance="@style/title"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layoutProgress"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textCalories"
+        android:layout_centerHorizontal="true">
+        <ProgressBar
+            android:id="@+id/progressBarCalories"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="20"
+            android:progressDrawable="@drawable/custom_progress" />
+        <TextView
+            android:layout_marginTop="60dp"
+            android:id="@+id/textTodayCalories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:gravity="center_horizontal"
+            android:textColor="@color/avocado"
+            android:textAppearance="@style/title"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textOf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="of"
+            android:gravity="center_horizontal"
+            android:textColor="@color/avocado"
+            android:textAppearance="@style/body_1"
+            android:layout_below="@+id/textTodayCalories"/>
+
+        <TextView
+            android:id="@+id/textNeededCalories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:gravity="center_horizontal"
+            android:textColor="@color/avocado"
+            android:textAppearance="@style/title"
+            android:layout_below="@+id/textOf"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textMacro"
+        android:layout_below="@+id/layoutProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Macro nutrients"
+        android:textColor="@color/avocado"
+        android:textAppearance="@style/title"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progressBarProtein"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="20"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_below="@+id/textMacro"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textProtein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Protein"
+        android:textAppearance="@style/title"
+        android:textColor="@color/avocado"
+        android:layout_alignTop="@+id/progressBarProtein"
+        android:layout_toEndOf="@+id/progressBarProtein"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/textProteinRemains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 g of 00 g"
+        android:textAppearance="@style/body_1"
+        android:textColor="@color/avocado"
+        android:layout_below="@+id/textProtein"
+        android:layout_toEndOf="@+id/progressBarProtein"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarCarbs"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="20"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_below="@+id/progressBarProtein"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textCarbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carbs"
+        android:textAppearance="@style/title"
+        android:textColor="@color/avocado"
+        android:layout_alignTop="@+id/progressBarCarbs"
+        android:layout_toEndOf="@+id/progressBarCarbs"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/textCarbsRemains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 g of 00 g"
+        android:textAppearance="@style/body_1"
+        android:textColor="@color/avocado"
+        android:layout_below="@+id/textCarbs"
+        android:layout_toEndOf="@+id/progressBarCarbs"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarFat"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="20"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_below="@+id/progressBarCarbs"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textFat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fat"
+        android:textAppearance="@style/title"
+        android:textColor="@color/avocado"
+        android:layout_alignTop="@+id/progressBarFat"
+        android:layout_toEndOf="@+id/progressBarFat"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/textFatRemains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 g of 00 g"
+        android:textAppearance="@style/body_1"
+        android:textColor="@color/avocado"
+        android:layout_below="@+id/textFat"
+        android:layout_toEndOf="@+id/progressBarFat"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"/>
+
+
+
+
+
+</RelativeLayout>

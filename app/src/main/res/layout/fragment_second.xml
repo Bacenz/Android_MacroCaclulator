@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".secondFragment"
+    android:padding="25dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textDaily"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Daily Energy"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/title"
+        android:gravity="center"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textDailyNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textDaily"
+        android:layout_alignBottom="@+id/textDaily"
+        android:layout_toEndOf="@id/textDaily"
+        android:layout_marginStart="-2dp"
+        android:gravity="center"
+        android:text="0000"
+        android:textAppearance="@style/title"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+    <TextView
+        android:id="@+id/textProtein"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Protein"
+        android:layout_below="@id/textDaily"
+        android:textAppearance="@style/title"
+        android:gravity="center"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textProteinNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textProtein"
+        android:layout_alignBottom="@+id/textProtein"
+        android:layout_toEndOf="@id/textProtein"
+        android:layout_marginStart="-2dp"
+        android:gravity="center"
+        android:text="0000"
+        android:textAppearance="@style/title"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textCarbs"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Carbs"
+        android:layout_below="@id/textProtein"
+        android:textAppearance="@style/title"
+        android:gravity="center"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textCarbsNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCarbs"
+        android:layout_alignBottom="@+id/textCarbs"
+        android:layout_toEndOf="@id/textCarbs"
+        android:layout_marginStart="-2dp"
+        android:gravity="center"
+        android:text="0000"
+        android:textAppearance="@style/title"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textFat"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Fat"
+        android:layout_below="@id/textCarbs"
+        android:textAppearance="@style/title"
+        android:gravity="center"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textFatNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textFat"
+        android:layout_alignBottom="@+id/textFat"
+        android:layout_toEndOf="@id/textFat"
+        android:layout_marginStart="-2dp"
+        android:gravity="center"
+        android:text="0000"
+        android:textAppearance="@style/title"
+        android:background="@drawable/rectangle_bg_no_radius"
+        android:textColor="@color/avocado"/>
+
+</RelativeLayout>

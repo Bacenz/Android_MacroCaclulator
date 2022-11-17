@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/light_avocado"
+            android:backgroundTint="#e0e0e0"
             android:padding="10dp">
 
             <TextView
@@ -62,7 +62,7 @@
             android:layout_height="100dp"
             android:orientation="vertical"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/light_avocado"
+            android:backgroundTint="#e0e0e0"
             android:padding="10dp"
             android:layout_below="@+id/layoutBMI"
             android:layout_marginTop="25dp">
@@ -95,7 +95,7 @@
             android:layout_height="100dp"
             android:orientation="vertical"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/light_avocado"
+            android:backgroundTint="#e0e0e0"
             android:padding="10dp"
             android:layout_below="@+id/layoutBMR"
             android:layout_marginTop="25dp">
@@ -163,7 +163,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignEnd="@+id/textDaily"
             android:layout_alignTop="@+id/textDaily"
             android:layout_alignBottom="@+id/textDaily"
             android:layout_toEndOf="@id/textDaily"
@@ -191,7 +190,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignEnd="@+id/textProtein"
             android:layout_alignTop="@+id/textProtein"
             android:layout_alignBottom="@+id/textProtein"
             android:layout_toEndOf="@id/textProtein"
@@ -219,7 +217,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignEnd="@+id/textCarbs"
             android:layout_alignTop="@+id/textCarbs"
             android:layout_alignBottom="@+id/textCarbs"
             android:layout_toEndOf="@id/textCarbs"
@@ -247,7 +244,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignEnd="@+id/textFat"
             android:layout_alignTop="@+id/textFat"
             android:layout_alignBottom="@+id/textFat"
             android:layout_toEndOf="@id/textFat"
@@ -266,7 +262,8 @@
             android:layout_alignEnd="@+id/textFatNumber"
             android:layout_marginTop="25dp"
             android:text="CONTINUE"
-            android:textAppearance="@style/button"/>
+            android:textAppearance="@style/button"
+            android:backgroundTint="#e0e0e0"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -2,18 +2,36 @@ package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class PlanActivity extends AppCompatActivity {
+
+    public void writeToFile(User user){
+        try{
+            String filename = "user_info";
+            FileOutputStream fileOut = openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(user);
+            objectOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,13 +134,25 @@ public class PlanActivity extends AppCompatActivity {
 
             }
         });
+
+        //Continue button
+        Button buttonProceed = (Button) findViewById(R.id.buttonProceed);
+        buttonProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeToFile(user);
+                Intent intent = new Intent(PlanActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 
 
     /*
     Calculation for protein% fat% and carb%
-    protein, carb = 4 calories          fat = 9 calories        1 gram = 7.7162 kcal
+    1g protein, carb = 4 kcal          1g fat = 9 kcal       1 gram body weight = 7.7162 kcal
 
     -----BASICS-----
     1 kg of body fat = 7700 kcal
@@ -135,7 +165,7 @@ public class PlanActivity extends AppCompatActivity {
 
     ======>>>>> FORMULA: daily macro goal = (daily consumption * percent goal) / macro
 
-    i.e. daily consumption = 2500; percent goal = 40 protein% 30 fat% 30 carb%; macro above
+    i.e. daily consumption = 2500 kcal; percent goal = 40 protein% 30 fat% 30 carb%; macro above
     -->
     protein = (2500 * 0.4) / 4 = 250 gram protein daily
     carb = (2500 * 0.3) / 4 = 187 gram carb daily

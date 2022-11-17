@@ -11,18 +11,10 @@
         android:layout_height="wrap_content"
         android:padding="25dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Go Back"
-            android:id="@+id/textBack"/>
-
         <RelativeLayout
-            android:layout_below="@id/textBack"
             android:id="@+id/layoutBMI"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:orientation="vertical"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/light_avocado"
             android:padding="10dp">
@@ -265,6 +257,27 @@
             android:textAppearance="@style/title"
             android:background="@drawable/rectangle_bg_no_radius"
             android:textColor="@color/avocado"/>
+
+        <Button
+            android:id="@+id/buttonProceed"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textFatNumber"
+            android:layout_alignEnd="@+id/textFatNumber"
+            android:layout_marginTop="25dp"
+            android:text="CONTINUE"
+            android:textAppearance="@style/button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Back"
+            android:id="@+id/textBack"
+            android:layout_toLeftOf="@+id/buttonProceed"
+            android:layout_alignTop="@id/buttonProceed"
+            android:layout_alignBottom="@id/buttonProceed"
+            android:gravity="center"
+            android:layout_marginRight="25dp"/>
 
     </RelativeLayout>
 

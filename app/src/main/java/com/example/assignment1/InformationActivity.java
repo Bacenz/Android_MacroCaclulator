@@ -26,6 +26,9 @@ public class InformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
 
+        //Class
+        User user = new User();
+
         //SeekBar setup
         SeekBar seekBarAge = (SeekBar) findViewById(R.id.seekBarAge);
         TextView textSeekBarAge = (TextView) findViewById(R.id.textSeekBarAge);
@@ -82,20 +85,15 @@ public class InformationActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
-            int age = bundle.getInt("Age",0) + 18;
-            int gender = bundle.getInt("Gender",0);
-            double weight = bundle.getDouble("Weight", 0.00);
-            double height = bundle.getDouble("Height", 0.00);
-            int goal = bundle.getInt("Goal",0);
-            int activity = bundle.getInt("Activity",0);
+            user = (User) bundle.getSerializable("User");
 
-            seekBarAge.setProgress(age);
-            if(gender == 1) radioBtnFemale.setChecked(true);
+            seekBarAge.setProgress(user.getAge());
+            if(user.getGender() == 1) radioBtnFemale.setChecked(true);
             else radioBtnMale.setChecked(true);
-            editTextWeight.setText(String.valueOf(weight));
-            editTextHeight.setText(String.valueOf(height));
-            spinnerGoal.setSelection(goal);
-            spinnerActivity.setSelection(activity);
+            editTextWeight.setText(String.valueOf(user.getWeight()));
+            editTextHeight.setText(String.valueOf(user.getHeight()));
+            spinnerGoal.setSelection(user.getGoal());
+            spinnerActivity.setSelection(user.getActivity());
         }
 
 
@@ -104,6 +102,7 @@ public class InformationActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User user = new User();
                 //Check if any field is empty (height, weight and gender)
                 boolean cont = true;
 
@@ -137,16 +136,17 @@ public class InformationActivity extends AppCompatActivity {
                 //If no field empty then init intent and put information in for PlanActivity
                 if(cont){
                     Intent intent = new Intent (InformationActivity.this,PlanActivity.class);
-                    intent.putExtra("Age",seekBarAge.getProgress());
+                    user.setAge(seekBarAge.getProgress());
                     if(radioGroupGender.getCheckedRadioButtonId() == R.id.radioBtnFemale){
-                        intent.putExtra("Gender",1); //1 is female
+                        user.setGender(1); //1 is female
                     } else {
-                        intent.putExtra("Gender",2); //2 is male
+                        user.setGender(2); //2 is male
                     }
-                    intent.putExtra("Weight",weight);
-                    intent.putExtra("Height",height);
-                    intent.putExtra("Activity",spinnerActivity.getSelectedItemPosition());
-                    intent.putExtra("Goal",spinnerGoal.getSelectedItemPosition());
+                    user.setWeight(weight);
+                    user.setHeight(height);
+                    user.setActivity(spinnerActivity.getSelectedItemPosition());
+                    user.setGoal(spinnerGoal.getSelectedItemPosition());
+                    intent.putExtra("User",user);
                     startActivity(intent);
                     finish();
                 }

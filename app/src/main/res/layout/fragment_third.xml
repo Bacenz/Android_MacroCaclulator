@@ -6,10 +6,6 @@
     tools:context=".thirdFragment"
     android:padding="10dp">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-
     <TextView
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -187,29 +183,18 @@
         android:layout_alignParentStart="true"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="%"
         android:textAppearance="@style/body_1"
-        android:gravity="center"
+        android:gravity="center_vertical|end"
 
         android:id="@+id/textPercentProtein"
         android:layout_alignTop="@id/textProtein"
         android:layout_alignBottom="@+id/textProtein"
-        android:layout_toEndOf="@+id/textProtein"/>
-
-    <TextView
-        android:id="@+id/textProteinNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/textProtein"
-        android:layout_alignBottom="@+id/textProtein"
-        android:layout_toEndOf="@id/textPercentProtein"
-        android:gravity="center_vertical |end"
-        android:text="0000"
-        android:textAppearance="@style/body_1"
+        android:layout_toEndOf="@+id/textProtein"
         android:padding="10dp"/>
+
 
     <TextView
         android:id="@+id/textCarbs"
@@ -222,28 +207,16 @@
         android:layout_alignParentStart="true"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="%"
         android:textAppearance="@style/body_1"
-        android:gravity="center"
+        android:gravity="center_vertical|end"
 
         android:id="@+id/textPercentCarbs"
         android:layout_alignTop="@id/textCarbs"
         android:layout_alignBottom="@+id/textCarbs"
-        android:layout_toEndOf="@+id/textCarbs"/>
-
-    <TextView
-        android:id="@+id/textCarbsNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/textCarbs"
-        android:layout_alignBottom="@+id/textCarbs"
-        android:layout_toEndOf="@id/textPercentCarbs"
-        android:gravity="center_vertical |end"
-        android:text="0000"
-        android:textAppearance="@style/body_1"
+        android:layout_toEndOf="@+id/textCarbs"
         android:padding="10dp"/>
 
     <TextView
@@ -257,28 +230,16 @@
         android:layout_alignParentStart="true"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="%"
         android:textAppearance="@style/body_1"
-        android:gravity="center"
+        android:gravity="center_vertical|end"
 
         android:id="@+id/textPercentFat"
         android:layout_alignTop="@id/textFat"
         android:layout_alignBottom="@+id/textFat"
-        android:layout_toEndOf="@+id/textFat"/>
-
-    <TextView
-        android:id="@+id/textFatNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/textFat"
-        android:layout_alignBottom="@+id/textFat"
-        android:layout_toEndOf="@id/textPercentFat"
-        android:gravity="center_vertical |end"
-        android:text="0000"
-        android:textAppearance="@style/body_1"
+        android:layout_toEndOf="@+id/textFat"
         android:padding="10dp"/>
 
     <Button

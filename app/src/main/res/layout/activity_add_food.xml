@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddFoodActivity"
+    android:padding="25dp">
+
+    <TextView
+        android:id="@+id/textNewFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new food"
+        android:textAppearance="@style/headline"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_below="@+id/textNewFood"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAppearance="@style/body_1"
+        android:layout_alignTop="@+id/editTextName"
+        android:layout_alignBottom="@+id/editTextName"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewName"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_below="@+id/textNewFood"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_toEndOf="@+id/textViewName"/>
+
+    <TextView
+        android:layout_below="@+id/textViewName"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:textAppearance="@style/body_1"
+        android:layout_alignTop="@+id/editTextCalories"
+        android:layout_alignBottom="@+id/editTextCalories"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewCalories"/>
+
+    <EditText
+        android:id="@+id/editTextCalories"
+        android:layout_below="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="numberDecimal"
+        android:layout_toEndOf="@+id/textViewCalories"/>
+
+    <TextView
+        android:layout_below="@+id/textViewCalories"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Protein"
+        android:textAppearance="@style/body_1"
+        android:layout_alignTop="@+id/editTextProtein"
+        android:layout_alignBottom="@+id/editTextProtein"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewProtein"/>
+
+    <EditText
+        android:id="@+id/editTextProtein"
+        android:layout_below="@+id/editTextCalories"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="numberDecimal"
+        android:layout_toEndOf="@+id/textViewProtein"/>
+
+    <TextView
+        android:layout_below="@+id/textViewProtein"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Carbs"
+        android:textAppearance="@style/body_1"
+        android:layout_alignTop="@+id/editTextCarbs"
+        android:layout_alignBottom="@+id/editTextCarbs"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewCarbs"/>
+
+    <EditText
+        android:id="@+id/editTextCarbs"
+        android:layout_below="@+id/editTextProtein"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="numberDecimal"
+        android:layout_toEndOf="@+id/textViewCarbs"/>
+
+    <TextView
+        android:layout_below="@+id/textViewCarbs"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Fat"
+        android:textAppearance="@style/body_1"
+        android:layout_alignTop="@+id/editTextFat"
+        android:layout_alignBottom="@+id/editTextFat"
+        android:gravity="center_vertical"
+        android:id="@+id/textViewFat"/>
+
+    <EditText
+        android:id="@+id/editTextFat"
+        android:layout_below="@+id/editTextCarbs"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="numberDecimal"
+        android:layout_toEndOf="@+id/textViewFat"/>
+
+    <Button
+        android:id="@+id/buttonProceed"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextFat"
+        android:layout_alignEnd="@+id/editTextFat"
+        android:layout_marginTop="25dp"
+        android:text="CONTINUE"
+        android:textAppearance="@style/button"
+        android:backgroundTint="#e0e0e0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Back"
+        android:id="@+id/textBack"
+        android:layout_toStartOf="@+id/buttonProceed"
+        android:layout_alignTop="@id/buttonProceed"
+        android:layout_alignBottom="@id/buttonProceed"
+        android:gravity="center"
+        android:layout_marginEnd="25dp"/>
+
+
+
+</RelativeLayout>

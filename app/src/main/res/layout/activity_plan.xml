@@ -35,7 +35,6 @@
                 android:id="@+id/textNumberBMI"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
                 android:text="00"
                 android:textAppearance="@style/title"
                 android:textColor="@color/avocado"
@@ -45,12 +44,11 @@
                 android:id="@+id/textRating"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Rating:"
                 android:textAppearance="@style/title"
                 android:textColor="@color/avocado"
                 android:layout_below="@+id/textBMI"
-                android:layout_toRightOf="@+id/textNumberBMI"/>
+                android:layout_toEndOf="@+id/textNumberBMI"/>
 
         </RelativeLayout>
 
@@ -140,7 +138,7 @@
             android:layout_alignEnd="@+id/layoutTDEE"
             android:layout_alignTop="@+id/textPlan"
             android:layout_alignBottom="@+id/textPlan"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:textColor="@color/avocado"/>
 
         <TextView
@@ -267,11 +265,11 @@
             android:layout_height="wrap_content"
             android:text="Go Back"
             android:id="@+id/textBack"
-            android:layout_toLeftOf="@+id/buttonProceed"
+            android:layout_toStartOf="@+id/buttonProceed"
             android:layout_alignTop="@id/buttonProceed"
             android:layout_alignBottom="@id/buttonProceed"
             android:gravity="center"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginEnd="25dp"/>
 
     </RelativeLayout>
 

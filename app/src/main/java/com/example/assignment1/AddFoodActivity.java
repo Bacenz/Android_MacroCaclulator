@@ -2,11 +2,18 @@ package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class AddFoodActivity extends AppCompatActivity {
 
@@ -21,16 +28,31 @@ public class AddFoodActivity extends AppCompatActivity {
         EditText editTextCarbs = (EditText) findViewById(R.id.editTextCarbs);
         EditText editTextFat = (EditText) findViewById(R.id.editTextFat);
 
-
+        TextView textBack = (TextView) findViewById(R.id.textBack);
+        textBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Button buttonProceed = (Button) findViewById(R.id.buttonProceed);
         buttonProceed.setOnClickListener(new View.OnClickListener() {
-            String name = "";
-            int calories = 0, protein = 0, fat = 0, carbs = 0;
-            boolean cont = true;
-
             @Override
             public void onClick(View view) {
+                String name = "";
+                int calories = 0, protein = 0, fat = 0, carbs = 0;
+                boolean cont = true;
+
+                if(TextUtils.isEmpty(editTextName.getText())){
+                    editTextName.setError("Name cannot be empty");
+                    cont = false;
+                }
+                if(TextUtils.isEmpty(editTextCalories.getText())){
+                    editTextCalories.setError("Calories cannot be empty");
+                    cont = false;
+                }
+
                 try {
                     calories = Integer.parseInt(editTextCalories.getText().toString());
                 } catch(NumberFormatException e){
@@ -55,12 +77,8 @@ public class AddFoodActivity extends AppCompatActivity {
                     editTextFat.setError("Invalid Fat");
                     cont = false;
                 }
-                if(TextUtils.isEmpty(editTextName.getText())){
-                    editTextName.setError("Name cannot be empty");
-                }
-                if(TextUtils.isEmpty(editTextCalories.getText())){
-                    editTextCalories.setError("Calories cannot be empty");
-                }
+
+
                 if(cont){
                     Food food = new Food();
                     food.setName(editTextName.getText().toString());
@@ -68,6 +86,10 @@ public class AddFoodActivity extends AppCompatActivity {
                     food.setProtein(protein);
                     food.setCarbs(carbs);
                     food.setFat(fat);
+                    Intent intent = new Intent(AddFoodActivity.this,secondFragment.class);
+                    intent.putExtra("Food",food);
+                    setResult(RESULT_OK,intent);
+                    finish();
                 }
 
             }

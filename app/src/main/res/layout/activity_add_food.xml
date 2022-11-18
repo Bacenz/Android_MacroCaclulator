@@ -31,8 +31,9 @@
         android:id="@+id/editTextName"
         android:layout_below="@+id/textNewFood"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_toEndOf="@+id/textViewName"/>
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/textViewName"
+        android:inputType="textMultiLine|textCapSentences" />
 
     <TextView
         android:layout_below="@+id/textViewName"

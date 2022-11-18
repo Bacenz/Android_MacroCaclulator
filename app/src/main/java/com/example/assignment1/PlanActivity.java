@@ -28,7 +28,7 @@ public class PlanActivity extends AppCompatActivity {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(user);
             objectOut.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

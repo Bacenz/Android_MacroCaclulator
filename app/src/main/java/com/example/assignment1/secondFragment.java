@@ -1,64 +1,111 @@
 package com.example.assignment1;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link secondFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 public class secondFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private ArrayList<Food> foods = new ArrayList<Food>();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public secondFragment() {
-        // Required empty public constructor
+    public void writeToFile(){
+        try{
+            String filename = "food_file";
+            FileOutputStream fileOut = this.getActivity().openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(foods);
+            objectOut.close();
+        } catch (IOException e) {
+            Toast.makeText(this.getActivity(), "Error: File Write Failed", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment secondFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static secondFragment newInstance(String param1, String param2) {
-        secondFragment fragment = new secondFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public void readFile(){
+        try {
+            String filename = "food_file";
+            String directory = this.getContext().getFilesDir().getAbsolutePath();
+            File file = new File (directory + "/" + filename);
+            FileInputStream fileIn = new FileInputStream(file);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            foods = (ArrayList<Food>) objectIn.readObject();
+            objectIn.close();
+            Toast.makeText(this.getActivity(), "Success read file", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e){
+            Toast.makeText(this.getActivity(), "Error: File Not Found", Toast.LENGTH_SHORT).show();
+        } catch (IOException e){
+            Toast.makeText(this.getActivity(), "Error: Error Reading Files", Toast.LENGTH_SHORT).show();
+        } catch (ClassNotFoundException e){
+            Toast.makeText(this.getActivity(), "Error: Food Class Not Found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public secondFragment(){
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onPause() {
+        super.onPause();
+        writeToFile();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+
+        readFile();
+
+        FoodViewAdapter adapter = new FoodViewAdapter();
+        adapter.setFoods(foods);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        Button buttonAddFood = view.findViewById(R.id.buttonAddFood);
+        buttonAddFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(secondFragment.this.getContext(),AddFoodActivity.class);
+                startActivityForResult(intent,100);
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 100){
+            if(resultCode == Activity.RESULT_OK){
+                Bundle bundle = data.getExtras();
+                if(bundle != null){
+                    foods.add((Food) bundle.getSerializable("Food"));
+                }
+            }
+        }
     }
 }

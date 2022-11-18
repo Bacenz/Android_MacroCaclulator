@@ -114,18 +114,7 @@ public class InformationActivity extends AppCompatActivity {
 
                 double weight = 0;
                 double height = 0;
-                try{
-                    weight = Double.parseDouble(editTextWeight.getText().toString());
-                } catch(NumberFormatException e){
-                    editTextWeight.setError("Invalid Weight");
-                    cont = false;
-                }
-                try{
-                    height = Double.parseDouble(editTextHeight.getText().toString());
-                } catch(NumberFormatException e){
-                    editTextHeight.setError("Invalid Height");
-                    cont = false;
-                }
+
                 if(TextUtils.isEmpty(editTextHeight.getText())){
                     editTextHeight.setError("Height is required");
                     cont = false;
@@ -138,6 +127,19 @@ public class InformationActivity extends AppCompatActivity {
                     radioBtnFemale.setError("Gender is required");
                     cont = false;
                 }
+                try{
+                    weight = Double.parseDouble(editTextWeight.getText().toString());
+                } catch(NumberFormatException e){
+                    editTextWeight.setError("Invalid Weight");
+                    cont = false;
+                }
+                try{
+                    height = Double.parseDouble(editTextHeight.getText().toString());
+                } catch(NumberFormatException e){
+                    editTextHeight.setError("Invalid Height");
+                    cont = false;
+                }
+
 
                 //If no field empty then init intent and put information in for PlanActivity
                 if(cont){

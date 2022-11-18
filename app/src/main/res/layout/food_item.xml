@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:id="@+id/parent"
+    android:background="@drawable/rounded_corner"
+    android:backgroundTint="#e0e0e0"
+    android:layout_marginTop="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Name"
+        android:id="@+id/textFoodName"
+        android:textAppearance="@style/title"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories: "
+        android:layout_below="@+id/textFoodName"
+        android:textAppearance="@style/body_1"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textProtein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Protein: "
+        android:layout_below="@+id/textCalories"
+        android:textAppearance="@style/body_1"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textCarbs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carbs: "
+        android:layout_below="@+id/textCalories"
+        android:textAppearance="@style/body_1"
+        android:gravity="center"
+        android:textColor="@color/avocado"/>
+
+    <TextView
+        android:id="@+id/textFat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fat: "
+        android:layout_below="@+id/textCalories"
+        android:textAppearance="@style/body_1"
+        android:gravity="end"
+        android:textColor="@color/avocado"/>
+
+</RelativeLayout>

@@ -38,7 +38,6 @@ public class secondFragment extends Fragment {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(foods);
             objectOut.close();
-            Toast.makeText(this.getActivity(), "Success Write File", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Toast.makeText(this.getActivity(), "Error: File Write Failed", Toast.LENGTH_SHORT).show();
         }
@@ -54,7 +53,6 @@ public class secondFragment extends Fragment {
                 ObjectInputStream objectIn = new ObjectInputStream(fileIn);
                 foods = (ArrayList<Food>) objectIn.readObject();
                 objectIn.close();
-                Toast.makeText(this.getActivity(), "Success read file", Toast.LENGTH_SHORT).show();
             } catch (FileNotFoundException e){
                 Toast.makeText(this.getActivity(), "Error: File Not Found", Toast.LENGTH_SHORT).show();
             } catch (IOException e){

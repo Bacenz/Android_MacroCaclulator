@@ -1,7 +1,9 @@
 package com.example.assignment1;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +44,19 @@ public class FoodViewAdapter extends RecyclerView.Adapter<FoodViewAdapter.ViewHo
         holder.iconDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Food removeItem = foods.get(holder.getAdapterPosition());
-                foods.remove(removeItem);
-                notifyItemRemoved(holder.getAdapterPosition());
-                notifyItemRangeChanged(holder.getAdapterPosition(),foods.size());
-
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle("Delete Food")
+                        .setMessage("Are you sure you want to delete the food?")
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Food removeItem = foods.get(holder.getAdapterPosition());
+                                foods.remove(removeItem);
+                                notifyItemRemoved(holder.getAdapterPosition());
+                                notifyItemRangeChanged(holder.getAdapterPosition(),foods.size());
+                            }
+                        })
+                        .setNegativeButton("CANCEL", null)
+                        .show();
             }
         });
     }

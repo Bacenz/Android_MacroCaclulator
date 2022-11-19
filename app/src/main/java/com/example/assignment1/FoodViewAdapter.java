@@ -3,6 +3,7 @@ package com.example.assignment1;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,14 @@ public class FoodViewAdapter extends RecyclerView.Adapter<FoodViewAdapter.ViewHo
         holder.textProtein.setText("Protein: " + foods.get(position).getProtein());
         holder.textFat.setText("Fat: " + foods.get(position).getFat());
         holder.textCarbs.setText("Carbs: " + foods.get(position).getCarbs());
+        holder.iconDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Food removeItem = foods.get(holder.getAdapterPosition());
+                foods.remove(removeItem);
+                notifyItemRemoved(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -40,15 +49,18 @@ public class FoodViewAdapter extends RecyclerView.Adapter<FoodViewAdapter.ViewHo
     }
 
     public void setFoods(ArrayList<Food> foods){
-        this.foods = foods;
+        this.foods.clear();
+        this.foods.addAll(foods);
         notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textFoodName, textCalories,textProtein, textFat, textCarbs;
+        private ImageView iconDelete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            iconDelete = itemView.findViewById(R.id.iconDelete);
             textFoodName = itemView.findViewById(R.id.textFoodName);
             textCalories = itemView.findViewById(R.id.textCalories);
             textProtein = itemView.findViewById(R.id.textProtein);

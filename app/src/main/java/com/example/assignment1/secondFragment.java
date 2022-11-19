@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,27 +37,30 @@ public class secondFragment extends Fragment {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(foods);
             objectOut.close();
+            Toast.makeText(this.getActivity(), "Success Write File", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Toast.makeText(this.getActivity(), "Error: File Write Failed", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void readFile(){
-        try {
-            String filename = "food_file";
-            String directory = this.getContext().getFilesDir().getAbsolutePath();
-            File file = new File (directory + "/" + filename);
-            FileInputStream fileIn = new FileInputStream(file);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            foods = (ArrayList<Food>) objectIn.readObject();
-            objectIn.close();
-            Toast.makeText(this.getActivity(), "Success read file", Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e){
-            Toast.makeText(this.getActivity(), "Error: File Not Found", Toast.LENGTH_SHORT).show();
-        } catch (IOException e){
-            Toast.makeText(this.getActivity(), "Error: Error Reading Files", Toast.LENGTH_SHORT).show();
-        } catch (ClassNotFoundException e){
-            Toast.makeText(this.getActivity(), "Error: Food Class Not Found", Toast.LENGTH_SHORT).show();
+        String filename = "food_file";
+        String directory = this.getContext().getFilesDir().getAbsolutePath();
+        File file = new File (directory + "/" + filename);
+        if(file.isFile()){
+            try {
+                FileInputStream fileIn = new FileInputStream(file);
+                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+                foods = (ArrayList<Food>) objectIn.readObject();
+                objectIn.close();
+                Toast.makeText(this.getActivity(), "Success read file", Toast.LENGTH_SHORT).show();
+            } catch (FileNotFoundException e){
+                Toast.makeText(this.getActivity(), "Error: File Not Found", Toast.LENGTH_SHORT).show();
+            } catch (IOException e){
+                Toast.makeText(this.getActivity(), "Error: Error Reading Files", Toast.LENGTH_SHORT).show();
+            } catch (ClassNotFoundException e){
+                Toast.makeText(this.getActivity(), "Error: Food Class Not Found", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -69,6 +73,8 @@ public class secondFragment extends Fragment {
         writeToFile();
     }
 
+    private FoodViewAdapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,7 +84,7 @@ public class secondFragment extends Fragment {
 
         readFile();
 
-        FoodViewAdapter adapter = new FoodViewAdapter();
+        adapter = new FoodViewAdapter();
         adapter.setFoods(foods);
 
         recyclerView.setAdapter(adapter);
@@ -104,6 +110,7 @@ public class secondFragment extends Fragment {
                 Bundle bundle = data.getExtras();
                 if(bundle != null){
                     foods.add((Food) bundle.getSerializable("Food"));
+                    adapter.setFoods(foods);
                 }
             }
         }

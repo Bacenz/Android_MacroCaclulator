@@ -28,7 +28,6 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TimePicker timePicker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

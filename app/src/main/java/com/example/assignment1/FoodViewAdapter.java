@@ -40,15 +40,7 @@ public class FoodViewAdapter extends RecyclerView.Adapter<FoodViewAdapter.ViewHo
         holder.textProtein.setText("Protein: " + foods.get(position).getProtein());
         holder.textFat.setText("Fat: " + foods.get(position).getFat());
         holder.textCarbs.setText("Carbs: " + foods.get(position).getCarbs());
-        holder.iconDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Food removeItem = foods.get(holder.getAdapterPosition());
-                foods.remove(removeItem);
-                notifyItemRemoved(holder.getAdapterPosition());
-                notifyItemRangeChanged(holder.getAdapterPosition(),foods.size());
-            }
-        });
+
     }
 
     @Override
@@ -74,8 +66,15 @@ public class FoodViewAdapter extends RecyclerView.Adapter<FoodViewAdapter.ViewHo
             textProtein = itemView.findViewById(R.id.textProtein);
             textFat = itemView.findViewById(R.id.textFat);
             textCarbs = itemView.findViewById(R.id.textCarbs);
+            iconDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Food removeItem = foods.get(getAdapterPosition());
+                    foods.remove(removeItem);
+                    notifyItemRemoved(getAdapterPosition());
+                    notifyItemRangeChanged(getAdapterPosition(),foods.size());
+                }
+            });
         }
     }
-
-
 }

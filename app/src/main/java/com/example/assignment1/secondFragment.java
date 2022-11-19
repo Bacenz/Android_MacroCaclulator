@@ -91,13 +91,13 @@ public class secondFragment extends Fragment {
             @Override
             public void onItemRangeChanged(int positionStart, int itemCount) {
                 super.onItemRangeChanged(positionStart, itemCount);
+                System.out.println(foods);
                 writeToFile();
             }
         });
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
 
         Button buttonAddFood = view.findViewById(R.id.buttonAddFood);
         buttonAddFood.setOnClickListener(new View.OnClickListener() {

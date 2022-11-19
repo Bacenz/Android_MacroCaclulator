@@ -2,7 +2,9 @@ package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,7 +34,16 @@ public class AddFoodActivity extends AppCompatActivity {
         textBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                new AlertDialog.Builder(AddFoodActivity.this)
+                        .setTitle("Go back")
+                        .setMessage("Are you sure you want to go back?")
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("CANCEL", null)
+                        .show();
             }
         });
 

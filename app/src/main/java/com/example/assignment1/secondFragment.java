@@ -3,6 +3,7 @@ package com.example.assignment1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -86,18 +87,18 @@ public class secondFragment extends Fragment {
 
         adapter = new FoodViewAdapter();
         adapter.setFoods(foods);
-
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
-            public void onItemRangeChanged(int positionStart, int itemCount) {
-                super.onItemRangeChanged(positionStart, itemCount);
-                System.out.println(foods);
-                writeToFile();
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+                foods.remove(positionStart);
+                adapter.setFoods(foods);
             }
         });
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
 
         Button buttonAddFood = view.findViewById(R.id.buttonAddFood);
         buttonAddFood.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +111,7 @@ public class secondFragment extends Fragment {
 
         return view;
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

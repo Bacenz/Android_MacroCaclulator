@@ -93,7 +93,7 @@ public class InformationActivity extends AppCompatActivity {
         if(bundle!=null){
             user = (User) bundle.getSerializable("User");
 
-            seekBarAge.setProgress(user.getAge());
+            seekBarAge.setProgress(user.getAge() - 18);
             if(user.getGender() == 1) radioBtnFemale.setChecked(true);
             else radioBtnMale.setChecked(true);
             editTextWeight.setText(String.valueOf(user.getWeight()));
@@ -144,7 +144,7 @@ public class InformationActivity extends AppCompatActivity {
                 //If no field empty then init intent and put information in for PlanActivity
                 if(cont){
                     Intent intent = new Intent (InformationActivity.this,PlanActivity.class);
-                    user.setAge(seekBarAge.getProgress());
+                    user.setAge(seekBarAge.getProgress() + 18);
                     if(radioGroupGender.getCheckedRadioButtonId() == R.id.radioBtnFemale){
                         user.setGender(1); //1 is female
                     } else {

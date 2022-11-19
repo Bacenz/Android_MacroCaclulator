@@ -87,8 +87,17 @@ public class secondFragment extends Fragment {
         adapter = new FoodViewAdapter();
         adapter.setFoods(foods);
 
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount) {
+                super.onItemRangeChanged(positionStart, itemCount);
+                writeToFile();
+            }
+        });
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
 
         Button buttonAddFood = view.findViewById(R.id.buttonAddFood);
         buttonAddFood.setOnClickListener(new View.OnClickListener() {

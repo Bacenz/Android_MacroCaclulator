@@ -118,8 +118,7 @@
         android:layout_below="@+id/editTextFat"
         android:layout_alignEnd="@+id/editTextFat"
         android:layout_marginTop="25dp"
-        android:text="CONTINUE"
-        android:textAppearance="@style/button"
+        android:text="ADD"
         android:backgroundTint="#e0e0e0"/>
 
     <TextView

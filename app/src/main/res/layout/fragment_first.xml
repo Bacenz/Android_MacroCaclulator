@@ -40,8 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:indeterminate="false"
-            android:max="100"
-            android:progress="20"
+            android:progress="1"
             android:progressDrawable="@drawable/custom_progress" />
         <TextView
             android:layout_marginTop="60dp"
@@ -93,8 +92,7 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:indeterminate="false"
-        android:max="100"
-        android:progress="20"
+        android:progress="1"
         android:progressDrawable="@drawable/custom_progress"
         android:layout_below="@+id/textMacro"
         android:layout_marginTop="10dp"/>
@@ -128,8 +126,7 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:indeterminate="false"
-        android:max="100"
-        android:progress="20"
+        android:progress="1"
         android:progressDrawable="@drawable/custom_progress"
         android:layout_below="@+id/progressBarProtein"
         android:layout_marginTop="10dp"/>
@@ -163,8 +160,7 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:indeterminate="false"
-        android:max="100"
-        android:progress="20"
+        android:progress="1"
         android:progressDrawable="@drawable/custom_progress"
         android:layout_below="@+id/progressBarCarbs"
         android:layout_marginTop="10dp"/>

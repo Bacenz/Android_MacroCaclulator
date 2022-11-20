@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Setup calendar + alarmManager to delete food_file each day at 0:00:00
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 24);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
 

@@ -11,12 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class PlanActivity extends AppCompatActivity {
@@ -64,6 +60,10 @@ public class PlanActivity extends AppCompatActivity {
         TextView textNumberBMI = (TextView) findViewById(R.id.textNumberBMI);
         TextView textNumberBMR = (TextView) findViewById(R.id.textNumberBMR);
         TextView textNumberTDEE = (TextView) findViewById(R.id.textNumberTDEE);
+
+        /*
+        SEE ADDITIONAL INFORMATION FOR CALCULATING BMI, BMR, TDEE and STUFF BELOW
+         */
 
         //Set text for BMI + calculation
         user.calculateBMI();
@@ -149,6 +149,18 @@ public class PlanActivity extends AppCompatActivity {
 
 
     /*
+    Calculation for BMI - Body Mass Index:
+    BMI = weight/(height^2)
+
+
+    Calculation for BMR - Basal Metabolic Rate using Revised Harris-Benedict Equation:
+    For men:
+        BMR = 13.397W + 4.799H - 5.677A + 88.362
+    For women:
+        BMR = 9.247W + 3.098H - 4.330A + 447.593
+
+
+
     Calculation for protein% fat% and carb%
     1g protein, carb = 4 kcal          1g fat = 9 kcal       1 gram body weight = 7.7162 kcal
 
@@ -194,5 +206,8 @@ public class PlanActivity extends AppCompatActivity {
     Carbs: 45%
     Fat: 30%
 
+    Formula taken from www.calculator.net
+    Recommended Macro goal from www.omnicalculator.com/health/macro
+    Put together by s3878466 - Trieu Hoang Khang - RMIT University
      */
 }

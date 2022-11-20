@@ -1,7 +1,6 @@
 package com.example.assignment1;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -132,8 +131,11 @@ public class thirdFragment extends Fragment {
         RadioButton radioBtnMale = (RadioButton) view.findViewById(R.id.radioBtnMale);
         RadioButton radioBtnFemale = (RadioButton) view.findViewById(R.id.radioBtnFemale);
 
+
+        //After setting up, read user_info file and put it inside edittext, spinner, seekbar
         String user_file = "user_info";
         user = (User) readFile(user_file,user);
+
         seekBarAge.setProgress(user.getAge()-18);
         if(user.getGender() == 1) radioBtnFemale.setChecked(true);
         else radioBtnMale.setChecked(true);
@@ -164,9 +166,11 @@ public class thirdFragment extends Fragment {
             }
         });
 
+        //Setup button save, with error checking
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Similar to InformationActivity, check each field and use cont to decide
                 boolean cont = true;
 
                 double weight = 0;
@@ -193,6 +197,7 @@ public class thirdFragment extends Fragment {
                     cont = false;
                 }
 
+                //If cont = true (no error) then recalculate everything about user, and update to file
                 if(cont){
                     user.setAge(seekBarAge.getProgress() + 18);
                     if(radioGroupGender.getCheckedRadioButtonId() == R.id.radioBtnFemale){

@@ -1,6 +1,6 @@
 package com.example.assignment1;
 
-import android.content.Context;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,16 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class firstFragment extends Fragment {
@@ -57,6 +52,8 @@ public class firstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+        //Setup textView and progressbar
         TextView textTodayCalories = view.findViewById(R.id.textTodayCalories);
         TextView textNeededCalories = view.findViewById(R.id.textNeededCalories);
         TextView textProteinRemains = view.findViewById(R.id.textProteinRemains);
@@ -66,8 +63,11 @@ public class firstFragment extends Fragment {
         ProgressBar progressBarProtein = view.findViewById(R.id.progressBarProtein);
         ProgressBar progressBarCarbs = view.findViewById(R.id.progressBarCarbs);
         ProgressBar progressBarFat = view.findViewById(R.id.progressBarFat);
+
+        //Handler for progressbar updates
         Handler progressBarHandler = new Handler();
 
+        //File IO and classes
         DailyMacro dailyMacro = new DailyMacro();
         User user = new User();
         String food_file = "food_file";
@@ -76,18 +76,23 @@ public class firstFragment extends Fragment {
         foods = (ArrayList<Food>) readFile(food_file,foods);
         user = (User) readFile(user_file,user);
 
+        //After getting all food of the day, calculate total calories + protein + carbs + fat
         dailyMacro.calculateEverything(foods);
+
+        //After calculate then set the text of textview
         textTodayCalories.setText(String.valueOf(dailyMacro.getTotalCal()));
         textNeededCalories.setText(String.valueOf(user.getDailyConsumption()));
         textProteinRemains.setText(String.valueOf(dailyMacro.getTotalProtein()) + " g of " + user.getProtein() + " g");
         textCarbsRemains.setText(String.valueOf(dailyMacro.getTotalCarbs()) + " g of " + user.getCarbs() + " g");
         textFatRemains.setText(String.valueOf(dailyMacro.getTotalFat()) + " g of " + user.getFat() + " g");
 
+        //Also set max value of progressbar
         progressBarCalories.setMax(user.getDailyConsumption());
         progressBarProtein.setMax(user.getProtein());
         progressBarCarbs.setMax(user.getCarbs());
         progressBarFat.setMax(user.getFat());
 
+        //Thread used to update progress bar
         progressBarHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -97,8 +102,6 @@ public class firstFragment extends Fragment {
                 progressBarFat.setProgress(dailyMacro.getTotalFat());
             }
         });
-
-
 
         return view;
     }

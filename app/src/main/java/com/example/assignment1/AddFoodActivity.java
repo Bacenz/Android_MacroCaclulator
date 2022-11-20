@@ -24,12 +24,15 @@ public class AddFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
 
+        //EditText setup
+
         EditText editTextName = (EditText) findViewById(R.id.editTextName);
         EditText editTextCalories = (EditText) findViewById(R.id.editTextCalories);
         EditText editTextProtein = (EditText) findViewById(R.id.editTextProtein);
         EditText editTextCarbs = (EditText) findViewById(R.id.editTextCarbs);
         EditText editTextFat = (EditText) findViewById(R.id.editTextFat);
 
+        //Text for go back, also add alert message
         TextView textBack = (TextView) findViewById(R.id.textBack);
         textBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,7 @@ public class AddFoodActivity extends AppCompatActivity {
             }
         });
 
+        //Button setup for add food, with error checking
         Button buttonProceed = (Button) findViewById(R.id.buttonProceed);
         buttonProceed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +93,7 @@ public class AddFoodActivity extends AppCompatActivity {
                     cont = false;
                 }
 
-
+                //If no error (cont = true) then add class to intent and finish
                 if(cont){
                     Food food = new Food();
                     food.setName(editTextName.getText().toString());
@@ -105,15 +109,5 @@ public class AddFoodActivity extends AppCompatActivity {
 
             }
         });
-
-        /*
-        The idea is to transfer the Food class back to fragment_second using startActivityForResult and saving it into an object array (ArrayList<Food>)
-        I might need another object called something food_of_today to save the arraylist of food (for today) and save it to a file (food_file) after OnStop() is called
-        When fragment_second is opened and food_file is present, read data from food_file and display it on fragment_second
-        When fragment_first is opened and food_file is present, read data from food_file and calculate remaining calories + macro nutrients
-        The class food_of_today should save an instance of total protein + fat + carbs + calories for reuse
-        After the end of day reset food_file data
-         */
-
     }
 }

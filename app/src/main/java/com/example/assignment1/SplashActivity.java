@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import java.io.File;
-import java.io.FileInputStream;
 
 public class SplashActivity extends AppCompatActivity {
 
     public boolean readFile(){
+        //Open file name called user_info to see if it exist
         String filename = "user_info";
         File directory = SplashActivity.this.getFilesDir();
         File file = new File(directory,filename);
@@ -27,6 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                //If user_info exists direct the user to MainActivity, otherwise InformationActivity
                 if(readFile()){
                     Intent intent = new Intent(SplashActivity.this,MainActivity.class);
                     startActivity(intent);
@@ -37,6 +38,6 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        }, 2000);
+        }, 1000);
     }
 }

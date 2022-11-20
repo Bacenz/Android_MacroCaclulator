@@ -2,13 +2,11 @@ package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,14 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 public class InformationActivity extends AppCompatActivity {
 
@@ -32,7 +23,7 @@ public class InformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
 
-        //Class
+        //Model class
         User user = new User();
 
         //SeekBar setup
@@ -41,6 +32,7 @@ public class InformationActivity extends AppCompatActivity {
         seekBarAge.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //Limit the age from 18 to 80
                 int temp = i + 18;
                 textSeekBarAge.setText(String.valueOf(temp));
             }
@@ -89,6 +81,7 @@ public class InformationActivity extends AppCompatActivity {
             }
         });
 
+        //If user go back from PlanActivity, get their information and fill it in seekbar, edittext and spinner.
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
             user = (User) bundle.getSerializable("User");

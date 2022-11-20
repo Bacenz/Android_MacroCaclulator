@@ -3,10 +3,8 @@ package com.example.assignment1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +28,7 @@ import java.util.ArrayList;
 public class secondFragment extends Fragment {
 
     private ArrayList<Food> foods = new ArrayList<Food>();
+    private FoodViewAdapter adapter;
 
     public void writeToFile(){
         try{
@@ -72,7 +71,6 @@ public class secondFragment extends Fragment {
         writeToFile();
     }
 
-    private FoodViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,10 +79,14 @@ public class secondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
 
+        //First read food file and put it into arraylist<food>
         readFile();
 
+        //Setup adapter for RecyclerView
         adapter = new FoodViewAdapter();
         adapter.setFoods(foods);
+
+        //Detect when data removed from adapter, remove item on arraylist too
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeRemoved(int positionStart, int itemCount) {
@@ -94,10 +96,11 @@ public class secondFragment extends Fragment {
             }
         });
 
+        //Assign adapter to recyclerView and setup layoutmanager
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-
+        //A button for add food, with startActivityForResult (code = 100)
         Button buttonAddFood = view.findViewById(R.id.buttonAddFood);
         buttonAddFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +119,8 @@ public class secondFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 100){
             if(resultCode == Activity.RESULT_OK){
+                //If bundle is not null, add the new food from AddFoodActivity to arraylist and update
+                //adapter
                 Bundle bundle = data.getExtras();
                 if(bundle != null){
                     foods.add((Food) bundle.getSerializable("Food"));

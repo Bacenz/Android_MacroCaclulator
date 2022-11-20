@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">assignment1</string>
+    <string name="app_name">Macro Nutrients</string>
 
     <string-array name="Goal">
         <item>Maintain Weight</item>
